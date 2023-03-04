@@ -13,7 +13,8 @@ pub struct Player;
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
         app.add_system_set(SystemSet::on_enter(GameState::Playing).with_system(spawn_player))
-            .add_system_set(SystemSet::on_update(GameState::Playing).with_system(move_player));
+            .add_system_set(SystemSet::on_update(GameState::Playing).with_system(move_player))
+            .add_system_set(SystemSet::on_update(GameState::Playing).with_system(click_player));
     }
 }
 
@@ -44,4 +45,8 @@ fn move_player(
     for mut player_transform in &mut player_query {
         player_transform.translation += movement;
     }
+}
+
+fn click_player(actions: Res<Actions>, mut player_query: Query<&mut Transform, With<Player>>) {
+
 }
