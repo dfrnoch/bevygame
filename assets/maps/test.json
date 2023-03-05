@@ -1,0 +1,8 @@
+{
+    "notes": [
+      {"spawn_time": 0.0, "position": [100.0, 0.0]},
+      {"spawn_time": 1.0, "position": [200.0, 0.0]},
+      {"spawn_time": 2.0, "position": [300.0, 0.0]}
+    ],
+    "sliders": []
+  }

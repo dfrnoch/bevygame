@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 
 use crate::actions::game_control::{get_movement, GameControl};
-use crate::GameState;
+use crate::AppState;
 
 mod game_control;
 
@@ -12,7 +12,7 @@ pub struct ActionsPlugin;
 impl Plugin for ActionsPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<Actions>().add_system_set(
-            SystemSet::on_update(GameState::Playing).with_system(set_movement_actions),
+            SystemSet::on_update(AppState::Playing).with_system(set_movement_actions),
         );
     }
 }
@@ -20,6 +20,7 @@ impl Plugin for ActionsPlugin {
 #[derive(Default, Resource)]
 pub struct Actions {
     pub player_movement: Option<Vec2>,
+    pub note_clicked: Option<Vec2>,
 }
 
 pub fn set_movement_actions(mut actions: ResMut<Actions>, keyboard_input: Res<Input<KeyCode>>) {
